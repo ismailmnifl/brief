@@ -1,0 +1,156 @@
+$bgColor : #d8e3e7;
+$secondryColor :#0061a8;
+@mixin elementVisibilityVisible {
+    visibility: visible;
+}
+@mixin elementVisibilityHidden {
+    visibility: hidden;
+}
+@mixin buttonStyles {
+    background-color: $secondryColor;
+    color: $bgColor;
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 3px;
+    &:hover {
+        background-color: $bgColor;
+        color: $secondryColor;
+    }
+  }
+body{
+    margin: 0xp;
+    }
+    header{
+        background-color:#0061a8;
+    }
+    footer{
+        display: flex;
+        background-color:#0061a8;
+        color: $bgColor;
+    }
+    
+    footer .section3{
+        text-align: center;
+    }
+    footer .section{
+        text-align: center;
+        color: $bgColor;
+    }
+    .section2 .img_group img{
+                width: 40px;
+    }
+    .sidebarDash{
+        background-color:#0061a8;
+        width: 40px;
+        overflow: hidden;
+    }
+    .sidebarDash span{
+       @include elementVisibilityHidden();
+    }
+    .sidebarDash ul{
+       @include elementVisibilityHidden();
+    }
+    .sidebarDash hr{
+       color: white;
+    }
+     .sidebarDash:hover{ 
+         width: 200px;
+         transition:width ease-in-out 1s;
+    }
+    .sidebarDash:hover ul{ 
+        @include elementVisibilityVisible();
+    }
+    .sidebarDash:hover span{ 
+        @include elementVisibilityVisible();
+    }
+    .titlesidebar{
+        color: $bgColor;
+    }
+    .fullpagecontainer{
+        display: flex;
+    }
+    .sidebarDash ul li:hover a{ 
+        background-color: $bgColor;
+        color: #0061a8;
+    }
+    .sidebaricone img{
+        width:30px;
+        margin: 3px;
+    }
+    .mainstoff{
+        width: 100%;
+    }
+    .statistics{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+    .statistics .squar{
+        width: 200px;
+        border-radius: 5px;
+        color: $bgColor;
+        height: 100px;
+        text-align: center;
+        background-color: #0061a8;
+    }
+    .tarifCards{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .containerTarifs{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .table-res{
+        width: 100%;
+        margin: 10px;
+    }
+
+    .viewtable{
+        margin: 10px;
+        width: 500px;
+    }
+    .acommodationForm{
+        width: 90%;
+    }
+    .pensionForm{
+        width: 90%;
+    }
+    .Pensiontable{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 3px
+    }
+    .acommodationTable{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 3px
+    }
+    .btn{
+        @include buttonStyles();
+    }
+    @media screen and (max-width : 768px) {
+        .statistics{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+            .statistics .squar{
+                margin-bottom: 15px;
+            }
+    }
+    

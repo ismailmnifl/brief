@@ -1,0 +1,223 @@
+body {
+  margin: 0xp;
+}
+
+header {
+  background-color: #0061a8;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #0061a8;
+  color: #d8e3e7;
+}
+
+footer .section3 {
+  text-align: center;
+}
+
+footer .section {
+  text-align: center;
+  color: #d8e3e7;
+}
+
+.section2 .img_group img {
+  width: 40px;
+}
+
+.sidebarDash {
+  background-color: #0061a8;
+  width: 40px;
+  overflow: hidden;
+}
+
+.sidebarDash span {
+  visibility: hidden;
+}
+
+.sidebarDash ul {
+  visibility: hidden;
+}
+
+.sidebarDash hr {
+  color: white;
+}
+
+.sidebarDash:hover {
+  width: 200px;
+  -webkit-transition: width ease-in-out 1s;
+  transition: width ease-in-out 1s;
+}
+
+.sidebarDash:hover ul {
+  visibility: visible;
+}
+
+.sidebarDash:hover span {
+  visibility: visible;
+}
+
+.titlesidebar {
+  color: #d8e3e7;
+}
+
+.fullpagecontainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sidebarDash ul li:hover a {
+  background-color: #d8e3e7;
+  color: #0061a8;
+}
+
+.sidebaricone img {
+  width: 30px;
+  margin: 3px;
+}
+
+.mainstoff {
+  width: 100%;
+}
+
+.statistics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.statistics .squar {
+  width: 200px;
+  border-radius: 5px;
+  color: #d8e3e7;
+  height: 100px;
+  text-align: center;
+  background-color: #0061a8;
+}
+
+.tarifCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.containerTarifs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.table-res {
+  width: 100%;
+  margin: 10px;
+}
+
+.viewtable {
+  margin: 10px;
+  width: 500px;
+}
+
+.acommodationForm {
+  width: 90%;
+}
+
+.pensionForm {
+  width: 90%;
+}
+
+.Pensiontable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.acommodationTable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.btn {
+  background-color: #0061a8;
+  color: #d8e3e7;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+
+.btn:hover {
+  background-color: #d8e3e7;
+  color: #0061a8;
+}
+
+@media screen and (max-width: 768px) {
+  .statistics {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .statistics .squar {
+    margin-bottom: 15px;
+  }
+}
+/*# sourceMappingURL=admindash.css.map */

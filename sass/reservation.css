@@ -1,0 +1,64 @@
+body {
+  margin: 0xp;
+  background-color: #d8e3e7;
+}
+
+header {
+  background-color: #0061a8;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #0061a8;
+  color: #d8e3e7;
+}
+
+footer .section3 {
+  text-align: center;
+}
+
+footer .section {
+  text-align: center;
+  color: #d8e3e7;
+}
+
+.section2 .img_group img {
+  width: 40px;
+}
+
+#bienSelect {
+  width: 200px;
+}
+
+.ligneA {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#cardimage {
+  width: 400px;
+}
+
+#avatarImage {
+  width: 300px;
+}
+
+#btnSubmitRes {
+  width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+  #cardimage {
+    width: auto;
+  }
+  #avatarImage {
+    width: 320px;
+  }
+  #btnSubmitRes {
+    width: 320px;
+  }
+}
+/*# sourceMappingURL=reservation.css.map */

@@ -1,0 +1,115 @@
+$bgColor : #d8e3e7;
+$secondryColor :#0061a8;
+
+@mixin buttonStyles {
+    background-color: $secondryColor;
+    color: $bgColor;
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    &:hover {
+        background-color: $bgColor;
+        color: $secondryColor;
+    }
+  }
+body {
+	background-color: $bgColor;
+    button {
+        border: 0;
+    }
+}
+#idColor {
+	background-color: $secondryColor;
+}
+header {
+	background-color: $secondryColor;
+}
+footer {
+	display: flex;
+	background-color: $secondryColor;
+	color: $bgColor;
+	.section3 {
+		text-align: center;
+	}
+	.section {
+		text-align: center;
+		color: $bgColor;
+	}
+	.section2{
+		.img_group{
+			img{
+				width: 40px;
+			}
+		}
+	}
+}
+#carouselExampleIndicators{
+	width: 100%;
+	height: 650px;
+	position: relative;
+	margin: auto;
+	overflow: hidden;
+}
+#slideID {
+	width: 40px;
+	margin: 5px;
+	height: 8px;
+	position: relative;
+	bottom: 60px;
+}
+.buttonWrapper {
+	position: absolute;
+	bottom: 200px;
+	width: 100%;
+}
+.right {
+	float: right;
+}
+.sliderCard {
+	padding: 5px;
+	position: absolute;
+	top: 60%;
+	left: 30%;
+	width: 700px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 8px;
+	text-align: center;
+	h1 {
+		color: $bgColor;
+	}
+	button {
+		@include buttonStyles;
+	}
+}
+.btnSebarator{
+    @include buttonStyles;
+}
+@media screen and (max-width : 768px) {
+	footer {
+		.section {
+			margin-top: 10px;
+		}
+	}
+	#slideID {
+		width: 30px;
+		margin: 5px;
+		height: 8px;
+		position: relative;
+		bottom: 10px;
+	}
+	.buttonWrapper {
+		position: absolute;
+		bottom: 80px;
+		width: 100%;
+	}
+	.sliderCard {
+		display: none;
+	}
+	#carouselExampleIndicators{
+		width: 100%;
+		height: auto;
+		position: relative;
+		margin: auto;
+		overflow: hidden;
+	}
+}

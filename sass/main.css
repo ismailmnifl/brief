@@ -1,0 +1,132 @@
+body {
+  background-color: #d8e3e7;
+}
+
+body button {
+  border: 0;
+}
+
+#idColor {
+  background-color: #0061a8;
+}
+
+header {
+  background-color: #0061a8;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #0061a8;
+  color: #d8e3e7;
+}
+
+footer .section3 {
+  text-align: center;
+}
+
+footer .section {
+  text-align: center;
+  color: #d8e3e7;
+}
+
+footer .section2 .img_group img {
+  width: 40px;
+}
+
+#carouselExampleIndicators {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+#slideID {
+  width: 40px;
+  margin: 5px;
+  height: 8px;
+  position: relative;
+  bottom: 60px;
+}
+
+.buttonWrapper {
+  position: absolute;
+  bottom: 200px;
+  width: 100%;
+}
+
+.right {
+  float: right;
+}
+
+.sliderCard {
+  padding: 5px;
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  width: 700px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.sliderCard h1 {
+  color: #d8e3e7;
+}
+
+.sliderCard button {
+  background-color: #0061a8;
+  color: #d8e3e7;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.sliderCard button:hover {
+  background-color: #d8e3e7;
+  color: #0061a8;
+}
+
+.btnSebarator {
+  background-color: #0061a8;
+  color: #d8e3e7;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.btnSebarator:hover {
+  background-color: #d8e3e7;
+  color: #0061a8;
+}
+
+@media screen and (max-width: 768px) {
+  footer .section {
+    margin-top: 10px;
+  }
+  #slideID {
+    width: 30px;
+    margin: 5px;
+    height: 8px;
+    position: relative;
+    bottom: 10px;
+  }
+  .buttonWrapper {
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+  }
+  .sliderCard {
+    display: none;
+  }
+  #carouselExampleIndicators {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+  }
+}
+/*# sourceMappingURL=main.css.map */

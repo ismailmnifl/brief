@@ -1,0 +1,54 @@
+$bgColor : #d8e3e7;
+$secondryColor :#0061a8;
+body{
+    margin: 0xp;
+    background-color: $bgColor;
+    }
+    header{
+        background-color:#0061a8;
+    }
+    footer{
+        display: flex;
+        background-color:#0061a8;
+        color: $bgColor;
+    }
+    footer .section3{
+        text-align: center;
+    }
+    footer .section{
+        text-align: center;
+        color: $bgColor;
+    }
+    .section2 .img_group img{
+                width: 40px;
+    }
+
+    #bienSelect{
+        width: 200px;
+        
+    }
+    .ligneA{
+        display: flex;
+    }
+    //card
+    #cardimage{
+        width: 400px;
+    }
+    #avatarImage{
+        width: 300px;
+    }
+    #btnSubmitRes{
+        width: 300px;
+    }
+    @media screen and (max-width : 768px)
+    {
+        #cardimage{
+        width: auto;
+        }
+    #avatarImage{
+        width: 320px;
+        }
+        #btnSubmitRes{
+            width: 320px;
+        }
+    }
