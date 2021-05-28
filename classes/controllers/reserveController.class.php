@@ -179,7 +179,7 @@ class reserveController extends reservation {
             
             $age = $childOptions['age'];
             $option = $childOptions['option'];
-
+            
             $query = "INSERT INTO `child` (`userId`, `age`, `option`) VALUES ($this->userId, $age, $option);";
             $sql = $this->con->query($query);
 

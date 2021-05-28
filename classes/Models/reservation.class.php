@@ -47,16 +47,10 @@ class reservation extends connetion{
 
     public function displayData()
 		{
-			$query = "SELECT user.userId,user.fullName,
-            reservation.reservationId, reservation.dateCheckIn,
-            reservation.dateCheckOut,accommodation.accomodationType,
-            pension.type, child.age FROM reservation 
-            INNER JOIN reservationaccomodation on reservation.reservationId = reservationaccomodation.reservationId 
-            INNER JOIN pension ON pension.pensionId =  reservationaccomodation.pensionId 
-            INNER JOIN  user on user.userId = reservation.userId 
-            INNER JOIN  accommodation ON accommodation.accommodationId = reservationaccomodation.accommodationId
-            INNER JOIN child ON child.userId = user.userId
-            ORDER by user.userId";
+			$query = "SELECT user.userId,user.fullName,user.phone,reservation.dateCheckIn,
+            reservation.dateCheckOut,user.email,reservation.totalPrice,user.password
+             FROM reservation INNER JOIN
+              user on reservation.userId = user.userId";
 			$result = $this->con->query($query);
 			if ($result->num_rows > 0) {
 				$data = array();
@@ -202,7 +196,56 @@ class reservation extends connetion{
             $result = $this->con->query($query);
             
             return $result->fetch_assoc()['totalPrice'];
-        }
+        } 
+ 
+        //admindash operation
+
+        public function displayAccomodationRecordById($id)
+		{
+			$query = "SELECT * FROM accommodation WHERE accommodationId = '$id'";
+			$result = $this->con->query($query);
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				return $row;
+			}else{
+				echo "Record not found";
+			}
+		}
+        public function displayPensionRecordById($id)
+		{
+			$query = "SELECT * FROM pension WHERE pensionId = '$id'";
+			$result = $this->con->query($query);
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				return $row;
+			}else{
+				echo "Record not found";
+			}
+		}
+        public function updateAccomodationRecord($id,$Aprice)
+		{
+				$query = "UPDATE accommodation SET price = '$Aprice' WHERE accommodationId = '$id'";
+				$sql = $this->con->query($query);
+			
+		}
+        public function updatePensionRecord($id,$Pprice)
+		{
+				$query = "UPDATE pension SET price = '$Pprice' WHERE pensionId = '$id'";
+				$sql = $this->con->query($query);
+			
+		}
+
+         public function statistic($id)
+		{
+			$query = "SELECT * from reservation INNER JOIN reservationaccomodation on reservationaccomodation.reservationId = reservation.reservationId WHERE reservation.userId = '$id'";
+			$result = $this->con->query($query);
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				return $row;
+			}else{
+				echo "Record not found";
+			}
+		} 
 }
     
 

@@ -40,6 +40,18 @@ body{
     #btnSubmitRes{
         width: 300px;
     }
+    .cont{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
+    .tablewraper{
+        background-color: white;
+        width: 800px;
+        border-radius: 5px;
+    }
     @media screen and (max-width : 768px)
     {
         #cardimage{

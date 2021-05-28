@@ -5,6 +5,41 @@ if (!isset($_SESSION['LogOut'])) {
     header('Location: login.php');
 }
 $reservationObj = new reservation();
+// display selection accomodation informations
+if(isset($_GET['editAccommodationId'])) {
+  $editAccomId = $_GET['editAccommodationId'];
+  $displayedaccomodation = $reservationObj->displayAccomodationRecordById($editAccomId);
+
+}
+// display selection pension informations
+if(isset($_GET['editPensionId'])) {
+  $editPensionId = $_GET['editPensionId'];
+  $displayedPension = $reservationObj->displayPensionRecordById($editPensionId);
+
+}
+
+
+//updating accomodation record
+if(isset($_POST['Aupdate'])) {
+
+  $Aprice = $_POST['Aprice'];
+  $accomId = $_POST['Aid'];
+
+  echo 'accomodation id is : '. $accomId . ' and the price is : ' . $Aprice;
+  
+  $reservationObj->updateAccomodationRecord($accomId,$Aprice);
+}
+
+//updating pension record
+if(isset($_POST['Pupdate'])) {
+
+  $Pprice = $_POST['Pprice'];
+  $PensId = $_POST['Pid'];
+
+  echo 'Pension id is : '.  $PensId . ' and the price is : ' . $Pprice;
+  
+  $reservationObj->updatePensionRecord($PensId,$Pprice);
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +51,31 @@ $reservationObj = new reservation();
     <link rel="stylesheet" href="Bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="sass/adminDash.css">
     <title>Admin Dashoard</title>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'les Ventes des acommodations'],
+          ['Apartement',     11],
+          ['Bangalow',      2],
+          ['chambre Simple',  2],
+          ['chambre double', 2],
+          
+        ]);
+
+        var options = {
+          title: 'les Ventes'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
     </head>
     <body>
 <?php
@@ -59,27 +119,37 @@ include('addON/header.php');
  $nReservations = $reservationObj->reservationCount();
  $totalRevenue = $reservationObj->TotalRevenue();
  $AVGcustomer = $reservationObj->AVGcustomerSpending();
+ $test =  number_format((float)$AVGcustomer['AV'], 2, '.', '');
+
+
  ?>
  <div class="mainstoff">
    <div class="statistics">
         <div class="squar numofcustomers"><h3>Number of costomers : <br><?php echo $nCustemers['NC']; ?></h3></div>
         <div class="squar totalRevenue"><h3>total net Revenue : <br><?php echo $totalRevenue['SM'];?>$</h3></div>
         <div class="squar numofreservation"><h3> Current reservations : <br><?php echo $nReservations['RC'];?></h3></div>
-        <div class="squar avgreservationprice"><h3>Averge reservation : <br> <?php echo $AVGcustomer['AV'];?>$</h3></div>
+        <div class="squar avgreservationprice"><h3>Averge reservation : <br> <?php echo $test;?>$</h3></div>
+  </div>
+  <div class="chartWrapper">
+  <div class="apartementCount"></div>
+  <div class="bangalowCount"></div>
+  <div class="chambreSimpleCount"></div>
+  <div class="chambreDoubleCount"></div>
+  
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
   </div>
   <h2 style="margin: 20px;">Table of Customers</h2>
 <table id="table-res" class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>user ID</th>
+        <th class="toHideInMobile">user ID</th>
         <th>Full name</th>
-        <th>reservation ID</th>
-        <th>check in date</th>
-        <th>chack out dtae</th>
-        <th>accomodation type</th>
-        <th>penstion type</th>
-        <th>child age</th>
-        
+        <th>Phone</th>
+        <th>check in</th>
+        <th>chack out</th>
+        <th class="toHideInMobile">Email</th>
+        <th class="toHideInMobile">Password</th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody>
@@ -88,14 +158,15 @@ include('addON/header.php');
           foreach ($reservations as $reservation) {
         ?>
         <tr>
-          <td><?php echo $reservation['userId'] ?></td>
+          <td class="toHideInMobile"><?php echo $reservation['userId'] ?></td>
           <td><?php echo $reservation['fullName'] ?></td>
-          <td><?php echo $reservation['reservationId'] ?></td>
+          <td><?php echo $reservation['phone'] ?></td>
           <td><?php echo $reservation['dateCheckIn'] ?></td>
           <td><?php echo $reservation['dateCheckOut'] ?></td>
-          <td><?php echo $reservation['accomodationType'] ?></td>
-          <td><?php echo $reservation['type'] ?></td>
-          <td><?php echo $reservation['age'] ?></td>
+          <td class="toHideInMobile"><?php echo $reservation['email'] ?></td>
+          <td class="toHideInMobile"><?php echo $reservation['password'] ?></td>
+          <td style="color: red;"><?php echo $reservation['totalPrice'] ?></td>
+          
         </tr>
       <?php } ?>
     </tbody>
@@ -103,12 +174,13 @@ include('addON/header.php');
   <h2 style="margin: 20px;">Tarifs Operations</h2>
 
   <div class="containerTarifs">
+  <!--pension price update form-->
   <div class="Pensiontable viewtable">
   <table class="table-res table table-striped table-hover">
     <thead>
       <tr>
-        <th>Pension ID</th>
-        <th>Pension Option</th>
+        <th>ID</th>
+        <th>Pension</th>
         <th>Price</th>
         <th>Actions</th>
       </tr>
@@ -123,9 +195,9 @@ include('addON/header.php');
           <td><?php echo $pension['type'] ?></td>
           <td><?php echo $pension['price'] ?></td>
           <td>
-            <a href="#">
+            <a href="adminDash.php?editPensionId=<?php echo  $pension['pensionId'] ?>">
               <img width="20px" src="images/update.png"></a>
-            <a style ="margin-left : 10px" href="#" onclick="confirm('Are you sure want to delete this record')">
+            <a style ="margin-left : 10px" onclick="confirm('Are you sure want to delete this record')">
             <img width="20px" src="images/remove.png">
             </a>
           </td>
@@ -134,28 +206,29 @@ include('addON/header.php');
     </tbody>
   </table>
   <div class="pensionForm">
-  <form action="edit.php" method="POST">
+  <form action="adminDash.php" method="POST">
     <div class="form-group">
-      <label for="Atype">Acommodation Type : </label>
-      <input type="text" class="form-control" name="Atype" value="" required="">
+      <label for="Atype">Pension Type : </label>
+      <input type="text" class="form-control" name="Ptype" value="<?php echo isset($displayedPension['type']) ? $displayedPension['type'] : "" ?>" required="">
     </div>
     <div class="form-group">
       <label for="Aprice">Price :</label>
-      <input type="text" class="form-control" name="Aprice" value="" required="">
+      <input type="text" class="form-control" name="Pprice" value="<?php echo isset($displayedPension['price']) ? $displayedPension['price'] : "" ?>" required="">
     </div>
     <div class="form-group">
-      <input type="hidden" name="id" value="<?php echo $customer['id']; ?>">
-      <input type="submit" name="update" class="btn" style="float:right;" value="Update">
+      <input type="hidden" name="Pid" value="<?php echo $displayedPension['pensionId']; ?>">
+      <input type="submit" name="Pupdate" class="btn" style="float:right;" value="Update">
     </div>
   </form>
 </div>
   </div>
-            <div class="acommodationTable viewtable">
+  <!--Accomodation price update form-->
+    <div class="acommodationTable viewtable">
   <table id="table-res" class="table-res table table-striped table-hover">
     <thead>
       <tr>
-        <th>Acommodation ID</th>
-        <th>Acommodation Option</th>
+        <th>Id </th>
+        <th>Acommodation</th>
         <th>Price</th>
         <th>Actions</th>
         
@@ -171,9 +244,9 @@ include('addON/header.php');
           <td><?php echo $accomodation['accomodationType'] ?></td>
           <td><?php echo $accomodation['price']?></td>
           <td>
-            <a href="#">
+            <a href="adminDash.php?editAccommodationId=<?php echo $accomodation['accommodationId'] ?>">
               <img width="20px" src="images/update.png"></a>
-            <a style ="margin-left : 10px" href="#" onclick="confirm('Are you sure want to delete this record')">
+            <a style ="margin-left : 10px" onclick="confirm('Are you sure want to delete this record')">
             <img width="20px" src="images/remove.png">
             </a>
           </td>
@@ -183,18 +256,18 @@ include('addON/header.php');
     </tbody>
   </table>
   <div class="acommodationForm">
-  <form action="edit.php" method="POST">
+  <form action="adminDash.php" method="POST">
     <div class="form-group">
       <label for="Atype">Acommodation Type : </label>
-      <input type="text" class="form-control" name="Atype" value="" required="">
+      <input type="text" class="form-control" name="Atype" value="<?php echo isset($displayedaccomodation['accomodationType']) ? $displayedaccomodation['accomodationType'] : "" ?>" required="">
     </div>
     <div class="form-group">
       <label for="Aprice">Price :</label>
-      <input type="text" class="form-control" name="Aprice" value="" required="">
+      <input type="text" class="form-control" name="Aprice" value="<?php echo isset($displayedaccomodation['price']) ? $displayedaccomodation['price'] : "" ?>" required="">
     </div>
     <div class="form-group">
-      <input type="hidden" name="id" value="<?php echo $customer['id']; ?>">
-      <input type="submit" name="update" class="btn" style="float:right;" value="Update">
+      <input type="hidden" name="Aid" value="<?php echo $displayedaccomodation['accommodationId']; ?>">
+      <input type="submit" name="Aupdate" class="btn" style="float:right;" value="Update">
     </div>
   </form>
 </div>

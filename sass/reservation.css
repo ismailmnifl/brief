@@ -50,6 +50,26 @@ footer .section {
   width: 300px;
 }
 
+.cont {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+}
+
+.tablewraper {
+  background-color: white;
+  width: 800px;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 768px) {
   #cardimage {
     width: auto;

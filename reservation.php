@@ -5,8 +5,6 @@ session_start();
 if (!isset($_SESSION['LogOut'])) {
     header('Location: Read.php');
 }
-
-
 include('includes/autoloader.inc.php');
 // include('classes/controllers/reservationController.class.php');
 
@@ -62,11 +60,11 @@ if(isset($_POST['button_type'])) {
                             <img id="avatarImage" src="images/apartement1.jpg" alt="Maxwell Admin">
                         </div>
                         
-                        <button id="btnSubmitRes0" class="mt-2 btn btn-primary">Submit reservation</button>
-                        <button id="btnSubmitRes1" class="mt-2 btn btn-success">Ajouter un autre bien</button>
-                        <button id="btnSubmitRes2" class="mt-2 btn btn-danger">Annuler la reservation</button>
+                        <button style="width:250px;" id="btnSubmitRes0" class="mt-2 btn btn-primary">Submit reservation</button><br>
+                        <button style="width:250px;" id="btnSubmitRes1" class="mt-2 btn btn-success">Ajouter un autre bien</button><br>
+                        <button style="width:250px;" id="btnSubmitRes2" class="mt-2 btn btn-danger">Annuler la reservation</button>
 
-                        <h1><?php echo $reservationObj->getTotalPrice($_SESSION['current_reservation']);  ?>HD</h1>
+                        <h1 style="margin-left : 60px" ><?php echo isset($_SESSION['current_reservation']) ? $reservationObj->getTotalPrice($_SESSION['current_reservation']) : ""; ?> MAD</h1> 
                         
                     </div>
 

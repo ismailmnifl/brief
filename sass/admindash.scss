@@ -143,6 +143,13 @@ body{
     .btn{
         @include buttonStyles();
     }
+    .user-profile{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     @media screen and (max-width : 768px) {
         .statistics{
             display: flex;
@@ -151,6 +158,9 @@ body{
             }
             .statistics .squar{
                 margin-bottom: 15px;
+            }
+            .toHideInMobile{
+                display: none;
             }
     }
     

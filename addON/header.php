@@ -2,7 +2,10 @@
     <?php
     // session_start();
     if (isset($_GET['logoutPress'])) {
-      session_destroy();
+      //session_destroy();
+      unset($_SESSION['userId']);
+      unset($_SESSION['LogOut']);
+      
       header("Location: Read.php");
     }
     ?>
@@ -42,11 +45,12 @@
                 <?php
 
                 if(isset($_SESSION['LogOut'])) {
-                  // echo '<a href="'.$_SESSION['LogOut'].'" class="btn btn-outline-light">Logout</a>';
+
                   $a_text = 'Logout';
                   $a_link = $_SESSION['LogOut'];
                 }
                 else {
+                  
                   $a_text = 'Login';
                   $a_link = 'login.php';
                 }

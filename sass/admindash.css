@@ -203,6 +203,22 @@ footer .section {
   color: #0061a8;
 }
 
+.user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 @media screen and (max-width: 768px) {
   .statistics {
     display: -webkit-box;
@@ -218,6 +234,9 @@ footer .section {
   }
   .statistics .squar {
     margin-bottom: 15px;
+  }
+  .toHideInMobile {
+    display: none;
   }
 }
 /*# sourceMappingURL=admindash.css.map */
